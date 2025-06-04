@@ -29,7 +29,7 @@ const bookStore = {
         },
         {
             id:5,
-            title: 'You Don’t Know JS',
+            title: 'You Dont Know JS',
             author: 'Kyle Simpson',
             imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/41T5H8u7fUL._SX331_BO1,204,203,200_.jpg'
         },
@@ -43,5 +43,27 @@ const bookStore = {
     ]
 }
 
-// Write your code here!
+// Update the header title
+const bookStoreTitle = document.getElementById('header');
+bookStoreTitle.textContent = bookStore.name;
 
+// Loop through books and add them to the DOM
+const bookList = document.getElementById('book-list');
+
+bookStore.books.forEach(book => {
+    const bookContainer = document.createElement('li');
+    const bookTitle = document.createElement('h3');
+    const bookAuthor = document.createElement('p');
+    const bookImage = document.createElement('img');
+// Set Contents
+    bookTitle.textContent = book.title;
+    bookAuthor.textContent = `Author: ${book.author}`;
+    bookImage.src = book.imageUrl;
+    bookImage.alt = book.title;
+// Append child elements to container
+    bookContainer.appendChild(bookTitle);
+    bookContainer.appendChild(bookAuthor);
+    bookContainer.appendChild(bookImage);
+// Append container to book list
+    bookList.appendChild(bookContainer);
+});
